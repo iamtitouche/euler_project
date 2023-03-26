@@ -17,13 +17,17 @@ List* prime_factors(int n) {
         append(prime_factors, 2);
     }
 
-    for (int i = 3; i <= n; i+=2) {
+    for (int i = 3; i <= pow(n, 1/2) + 1; i+=2) {
         while (n % i == 0) {
             n = n / i;
             append(prime_factors, i);
         }
-    }
 
+    }
+    if (n != 1) {
+        append(prime_factors, n);
+    }
+    
     return prime_factors;
 }
 
