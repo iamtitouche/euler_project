@@ -75,13 +75,3 @@ void remove_by_reference(List *list_pt, ListElement *element) {
     free(element);
     (*list_pt).lenght--;
 }
-
-int main() {
-    List *list = create_list();
-    append(list, 1);
-    append(list, 2);
-    append(list, 5);
-
-    remove_by_reference(list, (*list).head);
-    return EXIT_SUCCESS;
-}
