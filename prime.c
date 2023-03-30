@@ -12,19 +12,24 @@
 List* prime_factors(int n) {
     List *prime_factors = create_list();
     
-    while (n % 2 == 0) {
-        n = n / 2;
+    int curr_n = n;
+
+    while (curr_n % 2 == 0) {
+        curr_n = curr_n / 2;
         append(prime_factors, 2);
     }
 
-    for (int i = 3; i <= pow(n, 1/2) + 1; i+=2) {
-        while (n % i == 0) {
-            n = n / i;
+    for (int i = 3; i <= curr_n; i+=2) {
+        while (curr_n % i == 0) {
+            curr_n = curr_n / i;
             append(prime_factors, i);
         }
-
+        if (curr_n == 1 || pow(i, 2) > n) {
+            break;
+        }
     }
-    if (n != 1) {
+
+    if ((*prime_factors).lenght == 0) {
         append(prime_factors, n);
     }
     
@@ -32,7 +37,7 @@ List* prime_factors(int n) {
 }
 
 int main() {
-    int n = 18;
+    int n = 49;
     List *factors = prime_factors(n);
 
     ListElement *curr_f = (*factors).head;

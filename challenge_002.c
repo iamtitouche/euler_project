@@ -7,15 +7,17 @@
 #include <stdbool.h>
 
 int main(){
-    int t; 
+    int t;
+    long int n;
+    long int a, b, tmp;
+    long int sum;
     scanf("%d",&t);
-    for(int _ = 0; _ < t; _++){
-        long n; 
+    for(int _ = 0; _ < t; _++) {
         scanf("%ld",&n);
-        long sum = 0;
-        long a = 1;
-        long b = 1;
-        long tmp;
+        sum = 0;
+        a = 1;
+        b = 1;
+        tmp;
         while (b <= n) {
             if (b % 2 == 0) {
                 sum += b;
@@ -24,7 +26,7 @@ int main(){
             b += a;
             a = tmp;
         }
-        printf("%lld\n", sum);
+        printf("%ld\n", sum);
     }
     return 0;
 }
