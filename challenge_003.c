@@ -5,26 +5,17 @@
 #include <assert.h>
 #include <limits.h>
 #include <stdbool.h>
+#include "prime.c"
 
 int main(){
-    int t; 
+    int t;
+    int n;
     scanf("%d",&t);
     for(int _ = 0; _ < t; _++){
-        long n; 
-        scanf("%ld",&n);
-        long sum = 0;
-        long a = 1;
-        long b = 1;
-        long tmp;
-        while (b <= n) {
-            if (b % 2 == 0) {
-                sum += b;
-            }
-            tmp = b;
-            b += a;
-            a = tmp;
-        }
-        printf("%lld\n", sum);
+        scanf("%d",&n);
+        List *factors;
+        factors = prime_factors(n);
+        printf("%d\n", (*(*factors).queue).value);
     }
     return 0;
 }

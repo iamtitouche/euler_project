@@ -75,13 +75,12 @@ void pivot_sort(List *list) {
 
     while (curr_cell != NULL) {
         if ((*curr_cell).value <= pivot) {
-            append(bellow_pivot, (*curr_cell).value)
+            append(bellow_pivot, (*curr_cell).value);
         }
         else append(above_pivot, (*curr_cell).value);
-
+        
         curr_cell = (*curr_cell).next;
     }
-
 }
 
 void remove_by_reference(List *list_pt, ListElement *element) {
