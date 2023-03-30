@@ -49,6 +49,41 @@ void append(List *list_pt, int value) {
     (*list_pt).lenght++;
 }
 
+List* concatenate(List *list_1, List *list_2) {
+    if ((*list_1).lenght == 0) {
+        return list_2;
+    }
+    else if ((*list_2).lenght == 0) {
+        return list_1;
+    }
+    
+    (*list_1).queue = (*list_2).queue;
+    (*(*list_1).queue).next = (*list_2).head;
+    (*(*list_2).head).prev = (*list_1).queue;
+
+    return list_1;
+}
+
+
+void pivot_sort(List *list) {
+    int pivot = (*(*list).head).value;
+    
+    List *bellow_pivot = create_list();
+    List *above_pivot = create_list();
+
+    ListElement *curr_cell = (*(*list).head).next;
+
+    while (curr_cell != NULL) {
+        if ((*curr_cell).value <= pivot) {
+            append(bellow_pivot, (*curr_cell).value)
+        }
+        else append(above_pivot, (*curr_cell).value);
+
+        curr_cell = (*curr_cell).next;
+    }
+
+}
+
 void remove_by_reference(List *list_pt, ListElement *element) {
     if ((*list_pt).lenght == 1) {
         (*list_pt).head = NULL;
