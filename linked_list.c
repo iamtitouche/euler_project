@@ -33,9 +33,9 @@ List* create_list() {
 
 ListElement* create_list_element(int value) {
     ListElement *element = malloc(sizeof(ListElement));
-    (*element).value = value;
-    (*element).next = NULL;
-    (*element).prev = NULL;
+    element->value = value;
+    element->next = NULL;
+    element->prev = NULL;
     return element;
 }
 
@@ -60,15 +60,15 @@ ListElement* get_element_by_index(List* list, int index) {
 
 void append(List* list_pt, int value) {
     ListElement *new_element = create_list_element(value);
-    if ((*list_pt).lenght == 0) {
-        (*list_pt).head = new_element;
+    if (list_pt->lenght == 0) {
+        list_pt->head = new_element;
     }
     else {
-        (*new_element).prev = (*list_pt).queue;
-        (*(*list_pt).queue).next = new_element;
+        new_element->prev = list_pt->queue;
+        (list_pt->queue)->next = new_element;
     }
-    (*list_pt).queue = new_element;
-    (*list_pt).lenght++;
+    list_pt->queue = new_element;
+    list_pt->lenght++;
 }
 
 List* init_list(int value, int size) {
@@ -99,11 +99,12 @@ List* concatenate(List *list_1, List *list_2) {
     else if (list_2->lenght == 0) {
         return list_1;
     }
-    
+
     (list_1->queue)->next = (*list_2).head;
     (list_2->head)->prev = (*list_1).queue;
     list_1->queue = list_2->queue;
     list_1->lenght += list_2->lenght;
+
 
     return list_1;
 }
@@ -119,6 +120,7 @@ void pivot_sort(List *list) {
 
     while (curr_cell != NULL) {
         if (curr_cell->value <= pivot) {
+
             append(bellow_pivot, curr_cell->value);
         }
         else append(above_pivot, curr_cell->value);
