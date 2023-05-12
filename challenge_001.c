@@ -6,15 +6,12 @@
 
 
 int main(){
-    int n = 1, m = 2, sum = 0, tmp;
+    int n = 1000, sum = 0;
 
-    while (m <= 4000000) {
-        if (m % 2 == 0) {
-            sum += m;
+    for (int i = 3; i < n; i++) {
+        if (i % 3 == 0 || i % 5 == 0) {
+            sum += i;
         }
-        tmp = n;
-        n = m;
-        m = n + tmp;
     }
     printf("Answer : %d\n", sum);
 

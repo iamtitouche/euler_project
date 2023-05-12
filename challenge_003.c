@@ -1,21 +1,18 @@
-#include <math.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <assert.h>
-#include <limits.h>
-#include <stdbool.h>
-#include "prime.c"
+#include "prime.h"
+
 
 int main(){
-    int t;
-    int n;
-    scanf("%d",&t);
-    for(int _ = 0; _ < t; _++){
-        scanf("%d",&n);
-        List *factors;
-        factors = prime_factors(n);
-        printf("%d\n", (*(*factors).queue).value);
+    ulong n = 600851475143;
+
+    prime_factor *curr_factor = prime_factors(n);
+
+    while (curr_factor->next != NULL) {
+        curr_factor = curr_factor->next;
     }
-    return 0;
+
+    printf("Answer : %ld\n", curr_factor->value);
+
+    return EXIT_SUCCESS;
 }
