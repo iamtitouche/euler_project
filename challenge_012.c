@@ -1,29 +1,35 @@
 //
-// Created by titouan on 11/05/23.
+// Created by titouan on 13/05/23.
 //
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-int count_distinct_divisors(int n) {
+
+int count_distinct_divisors(unsigned long n) {
     int count = 0;
-    for (int i = 1; i <= n; i++) {
+    for (unsigned long i = 1; i <= pow(n, 0.5); i++) {
         if (n % i == 0) {
             count++;
+            if (n / i != i) {
+                count++;
+            }
         }
     }
     return count;
 }
 
 int main() {
-    int triangle = 1;
-    int i = 1;
+    unsigned long n = 1;
+    
+    int i = 2;
 
-    while (count_distinct_divisors(triangle) < 500) {
+    while (count_distinct_divisors(n) < 500) {
+        n += i;
         i++;
-        triangle += i;
     }
 
-    printf("Answer : %d\n", triangle);
+    printf("Answer : %ld\n", n);
 
     return EXIT_SUCCESS;
 }
