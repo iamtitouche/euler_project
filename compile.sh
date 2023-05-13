@@ -8,7 +8,7 @@ then
 fi
 
 echo "\n${PURPLE}===== Génération de l'exécutable =====${NC}\n"
-gcc -Wall -g $1.c -o $1.out -lm
+gcc -Wall -g $1.c -o exec_files/$1.out -lm
 
 read -p "Exécuter $1.out ? [o/n] " input
 until [ $input = o ] || [ $input = n ]
@@ -20,7 +20,7 @@ done
 if [ $input = o ]
 then
     echo "\n${PURPLE}============== Exécution =============${NC}\n"
-    ./$1.out
+    ./exec_files/$1.out
 else
     echo "\n${PURPLE}======================================${NC}\n"
     exit 0

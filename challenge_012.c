@@ -21,7 +21,7 @@ int count_distinct_divisors(unsigned long n) {
 
 int main() {
     unsigned long n = 1;
-    
+
     int i = 2;
 
     while (count_distinct_divisors(n) < 500) {
