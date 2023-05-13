@@ -86,6 +86,34 @@ typedef struct prime_factor {
     return first_factor;
 }
 
+
+bool* prime_list(int n) {
+     bool *prime_bool = malloc((n + 1) * sizeof(bool));
+
+     prime_bool[0] = false;
+     prime_bool[1] = false;
+     prime_bool[2] = true;
+
+     for (int i = 3; i <= n - 1; i += 2) {
+         prime_bool[i] = true;
+         prime_bool[i + 1] = false;
+     }
+
+     prime_bool[n] = (n % 2 == 1);
+
+     double sqrt_n = pow(n, 0.5);
+
+     for (int i = 3; i <= sqrt_n; i += 2) {
+         if (prime_bool[i]) {
+             for (int j = 2 * i; j <= n; j += i) {
+                 prime_bool[j] = false;
+             }
+         }
+     }
+
+     return prime_bool;
+ }
+
 #endif //EULER_PROJECT_PRIME_H
 
 
