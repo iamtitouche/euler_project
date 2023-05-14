@@ -22,7 +22,7 @@ int main() {
     large_integer *c;
 
     while (m->length < 1000) {
-        c = sum(n, m);
+        c = sum_large_integers(n, m);
         n = m;
         m = c;
         count++;
