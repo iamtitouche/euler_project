@@ -3,19 +3,54 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
-#include "prime.h"
+#include <stdbool.h>
+#include <math.h>
 
 
-int main(){
-    ulong n = 600851475143;
+bool palindromic_nb(int n) {
+    int length = (int) log10((double) n);
 
-    prime_factor *curr_factor = prime_factors(n);
+    char n_str[length];
+    sprintf(n_str, "%d", n);
 
-    while (curr_factor->next != NULL) {
-        curr_factor = curr_factor->next;
+    for (int i = 0; i <= length / 2; i++) {
+        if (n_str[i] != n_str[length - i]) {
+            return false;
+        }
     }
 
-    printf("Answer : %ld\n", curr_factor->value);
+    return true;
+}
+
+
+
+int main() {
+    int max_palindrome, curr_test;
+    int min_j;
+
+
+    max_palindrome = 0;
+    min_j = 100;
+
+    for (int i = 999; i >= 100; i--) {
+        if (999 * i < max_palindrome) {
+            break;
+        }
+
+        for (int j = 999; j >= min_j; j--) {
+            curr_test = j * i;
+            if (curr_test < max_palindrome) {
+                break;
+            }
+            if (palindromic_nb(curr_test)) {
+                min_j = j;
+                max_palindrome = curr_test;
+                break;
+            }
+        }
+    }
+    printf("%d\n", max_palindrome);
+
 
     return EXIT_SUCCESS;
 }
