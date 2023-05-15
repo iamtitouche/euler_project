@@ -8,6 +8,10 @@
 #include <stdlib.h>
 #include <math.h>
 
+
+//Création du type large_integer
+//Le paramètre length est le nombre de chiffres qui composent l'entier
+//Le paramètre digits est un array d'entier (int) compris entre 0 et 9 inclus qui correspondent au décimale de poids faible d'abord
 typedef struct large_integer {
     int length;
     int *digits;
@@ -35,6 +39,9 @@ large_integer* double_value(large_integer *number) {
     return result;
 }
 
+
+//Fonction sum_large_integers
+//Renvoie un pointeur vers un large_integer calculé comme la somme des large_integer d'addresses a et b
 large_integer* sum_large_integers(large_integer *a, large_integer *b) {
     int carried_out = 0;
     int tmp;
@@ -80,6 +87,8 @@ large_integer* sum_large_integers(large_integer *a, large_integer *b) {
     return result;
 }
 
+//Fonction multiply_by_int
+//Renvoie un pointeur vers un large_integer calculé comme le produit d'un large_integer d'addresse number et un petit entier factor
 large_integer* multiply_by_int(large_integer *number, int factor) {
     int carried_out = 0;
     int tmp;
@@ -109,7 +118,8 @@ large_integer* multiply_by_int(large_integer *number, int factor) {
 }
 
 
-
+//Fonction create_large_integer
+//Crée un large_integer dont la valeur et celle de l'entier n (int) passé en paramètre et renvoie l'addresse de ce large_integer
 large_integer* create_large_integer(int n) {
     large_integer *number = malloc(sizeof(large_integer));
 
@@ -124,7 +134,11 @@ large_integer* create_large_integer(int n) {
     return number;
 }
 
-
+//Fonction large_power_of_int
+//Fonction "Brut Force" de calcul d'une puissance entière power (int) d'un entier n (int)
+//Renvoie un pointeur de large_integer
+//Cette Fonction a une grande complexité en temps, on codera plus tard une fonction équivalente utilisant un algorithme d'exonentiation rapide
+//qui sera cependant plus complexe en mémoire
 large_integer* large_power_of_int(int n, int power) {
     large_integer *result = create_large_integer(n);
 
