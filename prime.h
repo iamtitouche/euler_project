@@ -114,6 +114,30 @@ bool* prime_list(int n) {
      return prime_bool;
  }
 
+
+ int* prime_list_from_booleans(bool *prime_bool, int size) {
+     int count = 0;
+
+     for (int i = 0; i < size; i++) {
+         if (prime_bool[i]) {
+             count++;
+         }
+     }
+
+     int *prime_list = malloc(count * sizeof(int));
+
+     int i = 0;
+
+     for (int j = 0; j < size; j++) {
+         if (prime_bool[j]) {
+             prime_list[i] = j;
+             i++;
+         }
+     }
+
+     return prime_list;
+ }
+
 #endif //EULER_PROJECT_PRIME_H
 
 
