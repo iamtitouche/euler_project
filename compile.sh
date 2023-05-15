@@ -25,3 +25,25 @@ else
     echo "\n${PURPLE}======================================${NC}\n"
     exit 0
 fi
+
+
+read -p "Envoyer sur le dépôt distant ? [o/n] " input
+until [ $input = o ] || [ $input = n ]
+do
+   read -p "Envoyer sur le dépôt distant ? [o/n] " input
+done
+
+
+if [ $input = o ]
+then
+    echo "\n${PURPLE}================ Envoi ===============${NC}\n"
+    git add $1.c
+
+    read -p "Message du Commit : " input
+
+    git commit -m "$input"
+    git push
+else
+    echo "\n${PURPLE}======================================${NC}\n"
+    exit 0
+fi
