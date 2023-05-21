@@ -169,4 +169,15 @@ void print_large_integer(large_integer *number) {
 }
 
 
+int sum_of_digits(large_integer *number) {
+    int sum = 0;
+
+    for (int i = 0; i < number->length; i++) {
+        sum += number->digits[i];
+    }
+
+    return sum;
+}
+
+
 #endif //EULER_PROJECT_LARGE_INTEGER_H
